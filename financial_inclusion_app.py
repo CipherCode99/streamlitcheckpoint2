@@ -20,8 +20,7 @@ st.write("### Dataset Preview")
 st.write(df.head())
 
 
-df.fillna(df.median(), inplace=True)
-
+df.fillna(df.select_dtypes(include=['number']).median(), inplace=True)
 
 label_encoders = {}
 for col in df.select_dtypes(include=['object']).columns:
